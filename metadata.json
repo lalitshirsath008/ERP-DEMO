@@ -1,0 +1,6 @@
+{
+  "name": "Demo ERP Portal",
+  "description": "A high-fidelity demo portal for ERP systems, showcasing inventory, ledger, and purchase orders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
