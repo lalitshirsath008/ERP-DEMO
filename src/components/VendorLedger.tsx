@@ -21,95 +21,95 @@ export default function VendorLedger() {
   return (
     <div className="space-y-6">
       <header>
-        <h2 className="text-2xl font-bold text-slate-100">Vendor Ledger</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Vendor Ledger</h2>
         <p className="text-slate-500 text-sm">S0826 — DEMO USER — Period: 01-Apr-2026 to 01-Oct-2026</p>
       </header>
 
-      <div className="flex flex-wrap gap-4 items-end bg-slate-900/40 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-wrap gap-4 items-end bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm dark:shadow-none">
         <div className="space-y-2">
-          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">From Date</label>
-          <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-300">
-            <Calendar size={14} className="text-slate-500" />
+          <label className="text-[10px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest">From Date</label>
+          <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-700 dark:text-slate-300">
+            <Calendar size={14} className="text-slate-400 dark:text-slate-500" />
             <span>01-04-2026</span>
           </div>
         </div>
         <div className="space-y-2">
-          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">To Date</label>
-          <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-300">
-            <Calendar size={14} className="text-slate-500" />
+          <label className="text-[10px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest">To Date</label>
+          <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-700 dark:text-slate-300">
+            <Calendar size={14} className="text-slate-400 dark:text-slate-500" />
             <span>01-10-2026</span>
           </div>
         </div>
-        <button className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-bold shadow-lg shadow-blue-900/20 transition-all">
+        <button className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-bold shadow-lg shadow-blue-900/20 transition-all active:scale-95">
           Fetch
         </button>
         <button 
           onClick={handleExport}
-          className="flex items-center gap-2 px-4 py-2 border border-slate-700 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
         >
           <Download size={14} /> Export
         </button>
 
         <div className="flex-1 flex gap-4 overflow-x-auto pb-1 scrollbar-hide">
           {[
-            { label: 'OPENING BALANCE', value: '-₹26,07,016.60', icon: Scale, color: 'text-blue-400' },
-            { label: 'INVOICES', value: '₹8,45,253.00', icon: FileText, color: 'text-sky-400' },
-            { label: 'PAYMENTS MADE', value: '₹0.00', icon: CreditCard, color: 'text-emerald-400' },
-            { label: 'TDS DEDUCTED', value: '₹7,061.00', icon: Wallet, color: 'text-amber-400' },
-            { label: 'CLOSING BALANCE', value: '-₹34,52,269.60', icon: Banknote, color: 'text-purple-400' },
+            { label: 'OPENING BALANCE', value: '-₹26,07,016.60', icon: Scale, color: 'text-blue-600 dark:text-blue-400' },
+            { label: 'INVOICES', value: '₹8,45,253.00', icon: FileText, color: 'text-sky-600 dark:text-sky-400' },
+            { label: 'PAYMENTS MADE', value: '₹0.00', icon: CreditCard, color: 'text-emerald-600 dark:text-emerald-400' },
+            { label: 'TDS DEDUCTED', value: '₹7,061.00', icon: Wallet, color: 'text-amber-600 dark:text-amber-400' },
+            { label: 'CLOSING BALANCE', value: '-₹34,52,269.60', icon: Banknote, color: 'text-purple-600 dark:text-purple-400' },
           ].map((item) => (
-            <div key={item.label} className="min-w-[180px] bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center gap-3">
-              <div className={`p-2 rounded-lg bg-slate-900 ${item.color}`}>
+            <div key={item.label} className="min-w-[180px] bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex items-center gap-3 shadow-sm dark:shadow-none">
+              <div className={`p-2 rounded-lg bg-slate-50 dark:bg-slate-900 ${item.color}`}>
                 <item.icon size={16} />
               </div>
               <div>
-                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-tight">{item.label}</p>
-                <p className={`text-xs font-mono font-bold ${item.color}`}>{item.value}</p>
+                <p className="text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-tight">{item.label}</p>
+                <p className={`text-xs font-bold ${item.color}`}>{item.value}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden">
+      <div className="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm dark:shadow-none">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-800 bg-slate-900/60">
+              <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
                 {['DATE', 'TYPE', 'DOC NO', 'PARTICULARS', 'OFFSET A/C', 'DEBIT (₹)', 'CREDIT (₹)', 'TDS (₹)', 'BALANCE (₹)'].map((head) => (
-                  <th key={head} className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest whitespace-nowrap">{head}</th>
+                  <th key={head} className="px-6 py-4 text-[10px] font-black text-slate-600 dark:text-slate-500 uppercase tracking-widest whitespace-nowrap">{head}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
-              <tr className="bg-slate-900/20">
-                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
-                <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 py-1 rounded bg-slate-800 text-slate-400 text-[10px] font-bold uppercase">Opening Balance</span></td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
-                <td className="px-6 py-4 text-xs font-mono font-bold text-slate-300 tabular-nums whitespace-nowrap">-₹26,07,016.60</td>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tr className="bg-slate-50/50 dark:bg-slate-900/20">
+                <td className="px-6 py-4 text-xs font-bold text-slate-600 dark:text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold uppercase">Opening Balance</span></td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-600 dark:text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-600 dark:text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-600 dark:text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-600 dark:text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-600 dark:text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-600 dark:text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-900 dark:text-slate-300 tabular-nums whitespace-nowrap">-₹26,07,016.60</td>
               </tr>
               {ledgerEntries.map((row, idx) => (
-                <tr key={idx} className="hover:bg-slate-800/30 transition-colors group">
-                  <td className="px-6 py-4 text-[11px] text-slate-400 whitespace-nowrap">{row.date}</td>
+                <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+                  <td className="px-6 py-4 text-[11px] text-slate-900 dark:text-slate-400 whitespace-nowrap font-medium">{row.date}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${
-                      row.type === 'Invoice' ? 'bg-blue-600/10 text-blue-400 border border-blue-600/20' : 'bg-amber-600/10 text-amber-400 border border-amber-600/20'
+                      row.type === 'Invoice' ? 'bg-blue-600/10 text-blue-700 dark:text-blue-400 border border-blue-500/20' : 'bg-amber-600/10 text-amber-700 dark:text-amber-400 border border-amber-600/20'
                     }`}>
                       {row.type}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-[11px] text-slate-400 whitespace-nowrap">{row.docNo}</td>
-                  <td className="px-6 py-4 text-[10px] leading-relaxed text-slate-500 max-w-xs truncate whitespace-nowrap group-hover:max-w-none group-hover:whitespace-normal transition-all">{row.particulars}</td>
-                  <td className="px-6 py-4 text-[10px] text-slate-500 whitespace-nowrap">{row.offset}</td>
-                  <td className="px-6 py-4 text-[11px] font-mono text-slate-400 tabular-nums whitespace-nowrap">{row.debit}</td>
-                  <td className="px-6 py-4 text-[11px] font-mono text-slate-400 tabular-nums whitespace-nowrap">{row.credit}</td>
-                  <td className="px-6 py-4 text-[11px] font-mono text-amber-500/80 font-bold tabular-nums whitespace-nowrap">{row.tds}</td>
-                  <td className="px-6 py-4 text-[11px] font-mono font-bold text-slate-300 tabular-nums whitespace-nowrap">{row.balance}</td>
+                  <td className="px-6 py-4 text-[11px] text-slate-900 dark:text-slate-400 whitespace-nowrap font-bold">{row.docNo}</td>
+                  <td className="px-6 py-4 text-[10px] leading-relaxed text-slate-600 dark:text-slate-500 max-w-xs truncate whitespace-nowrap group-hover:max-w-none group-hover:whitespace-normal transition-all">{row.particulars}</td>
+                  <td className="px-6 py-4 text-[10px] text-slate-600 dark:text-slate-500 whitespace-nowrap">{row.offset}</td>
+                  <td className="px-6 py-4 text-[11px] text-slate-700 dark:text-slate-400 tabular-nums whitespace-nowrap">{row.debit}</td>
+                  <td className="px-6 py-4 text-[11px] text-slate-700 dark:text-slate-400 tabular-nums whitespace-nowrap">{row.credit}</td>
+                  <td className="px-6 py-4 text-[11px] text-amber-700 dark:text-amber-500/80 font-bold tabular-nums whitespace-nowrap">{row.tds}</td>
+                  <td className="px-6 py-4 text-[11px] font-bold text-slate-900 dark:text-slate-300 tabular-nums whitespace-nowrap">{row.balance}</td>
                 </tr>
               ))}
             </tbody>

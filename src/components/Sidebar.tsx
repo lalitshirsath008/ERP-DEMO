@@ -5,9 +5,10 @@ interface SidebarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   isCollapsed: boolean;
+  isDarkMode: boolean;
 }
 
-export default function Sidebar({ activeTab, setActiveTab, isCollapsed }: SidebarProps) {
+export default function Sidebar({ activeTab, setActiveTab, isCollapsed, isDarkMode }: SidebarProps) {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'ledger', label: 'Vendor Ledger', icon: FileText },
@@ -16,7 +17,11 @@ export default function Sidebar({ activeTab, setActiveTab, isCollapsed }: Sideba
   ];
 
   return (
-    <aside className={`flex flex-col border-r border-slate-800/60 bg-slate-950 z-20 transition-all duration-300 ${isCollapsed ? 'w-24' : 'w-72'}`}>
+    <aside className={`flex flex-col border-r z-20 transition-all duration-300 ${isCollapsed ? 'w-24' : 'w-72'} ${
+      isDarkMode 
+      ? 'border-slate-800 bg-slate-950' 
+      : 'border-slate-200 bg-white'
+    }`}>
       <div className={`p-6 flex flex-col h-full ${isCollapsed ? 'items-center' : ''}`}>
         <div className={`flex items-center gap-4 mb-12 ${isCollapsed ? 'justify-center' : ''}`}>
           <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center font-black text-xl text-white shadow-xl shadow-blue-900/40 transform rotate-3">
@@ -24,7 +29,7 @@ export default function Sidebar({ activeTab, setActiveTab, isCollapsed }: Sideba
           </div>
           {!isCollapsed && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <h1 className="text-base font-black text-white uppercase tracking-tighter whitespace-nowrap">Demo Group</h1>
+              <h1 className={`text-base font-black uppercase tracking-tighter whitespace-nowrap ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Demo Group</h1>
               <p className="text-[10px] text-blue-500 font-bold uppercase tracking-widest leading-none">ERP Solution</p>
             </motion.div>
           )}
@@ -51,7 +56,9 @@ export default function Sidebar({ activeTab, setActiveTab, isCollapsed }: Sideba
               className={`w-full flex items-center rounded-xl text-sm font-bold transition-all duration-300 relative group ${
                 activeTab === item.id
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20'
-                  : 'text-slate-500 hover:text-slate-200 hover:bg-slate-900/50'
+                  : isDarkMode 
+                    ? 'text-slate-500 hover:text-slate-200 hover:bg-slate-900/50'
+                    : 'text-slate-400 hover:text-slate-900 hover:bg-slate-100'
               } ${isCollapsed ? 'justify-center p-4' : 'px-5 py-4 gap-4'}`}
             >
               <item.icon size={20} strokeWidth={activeTab === item.id ? 2.5 : 2} className="shrink-0" />
@@ -65,7 +72,7 @@ export default function Sidebar({ activeTab, setActiveTab, isCollapsed }: Sideba
           ))}
         </nav>
 
-        <div className="mt-auto pt-8 border-t border-slate-900 w-full">
+        <div className={`mt-auto pt-8 border-t w-full ${isDarkMode ? 'border-slate-900' : 'border-slate-100'}`}>
           <button 
             onClick={() => setActiveTab('logout')}
             title={isCollapsed ? 'Logout' : ''}
