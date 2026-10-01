@@ -5,11 +5,12 @@ import VendorLedger from './components/VendorLedger';
 import PurchaseOrderHistory from './components/PurchaseOrderHistory';
 import InventoryAvailable from './components/InventoryAvailable';
 import LoginPage from './components/LoginPage';
-import { Maximize2, Moon, User } from 'lucide-react';
+import { Maximize2, Moon, User, Menu } from 'lucide-react';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   // Check if already logged in (optional persistence)
   useEffect(() => {
@@ -39,22 +40,34 @@ export default function App() {
 
   return (
     <div className="flex h-screen bg-slate-950 text-slate-200 font-sans selection:bg-blue-500/30">
-      <Sidebar activeTab={activeTab} setActiveTab={(tab) => {
-        if (tab === 'logout') handleLogout();
-        else setActiveTab(tab);
-      }} />
+      <Sidebar 
+        activeTab={activeTab} 
+        isCollapsed={isSidebarCollapsed}
+        setActiveTab={(tab) => {
+          if (tab === 'logout') handleLogout();
+          else setActiveTab(tab);
+        }} 
+      />
       
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <header className="h-16 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md flex items-center justify-between px-8 shrink-0 sticky top-0 z-10">
-          <div className="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">
-            <span>Vendor Portal</span>
-            <span className="text-slate-800">/</span>
-            <span className="text-blue-500">
-              {activeTab === 'dashboard' && 'Dashboard'}
-              {activeTab === 'ledger' && 'Vendor Ledger'}
-              {activeTab === 'orders' && 'Purchase Order History'}
-              {activeTab === 'inventory' && 'Inventory available'}
-            </span>
+          <div className="flex items-center gap-6">
+            <button 
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-700 transition-all active:scale-95"
+            >
+              <Menu size={20} />
+            </button>
+            <div className="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">
+              <span>Vendor Portal</span>
+              <span className="text-slate-800">/</span>
+              <span className="text-blue-500">
+                {activeTab === 'dashboard' && 'Dashboard'}
+                {activeTab === 'ledger' && 'Vendor Ledger'}
+                {activeTab === 'orders' && 'Purchase Order History'}
+                {activeTab === 'inventory' && 'Inventory available'}
+              </span>
+            </div>
           </div>
           
           <div className="flex items-center gap-4">

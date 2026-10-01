@@ -61,18 +61,18 @@ export default function InventoryAvailable() {
             <thead>
               <tr className="border-b border-slate-800 bg-slate-900/60">
                 {['SAP CODE', 'ITEM NAME', 'RGK PART NO', 'UOM', 'CLOSING STOCK'].map((head) => (
-                  <th key={head} className="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">{head}</th>
+                  <th key={head} className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest whitespace-nowrap">{head}</th>
                 ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800">
               {inventory.map((row, idx) => (
-                <tr key={idx} className="hover:bg-slate-800/30 transition-colors">
-                  <td className="px-6 py-4 text-xs font-bold text-blue-400">{row.sapCode}</td>
-                  <td className="px-6 py-4 text-xs font-medium text-slate-300">{row.itemName}</td>
-                  <td className="px-6 py-4 text-xs text-slate-400">{row.partNo}</td>
-                  <td className="px-6 py-4 text-xs text-slate-400">{row.uom}</td>
-                  <td className="px-6 py-4 text-xs font-mono font-bold text-blue-400 text-right">{row.closingStock}</td>
+                <tr key={idx} className="hover:bg-slate-800/30 transition-colors group">
+                  <td className="px-6 py-4 text-[11px] font-bold text-blue-400 whitespace-nowrap">{row.sapCode}</td>
+                  <td className="px-6 py-4 text-[11px] font-medium text-slate-300 whitespace-nowrap">{row.itemName}</td>
+                  <td className="px-6 py-4 text-[11px] text-slate-400 whitespace-nowrap">{row.partNo}</td>
+                  <td className="px-6 py-4 text-[11px] text-slate-400 whitespace-nowrap">{row.uom}</td>
+                  <td className="px-6 py-4 text-[11px] font-mono font-bold text-blue-400 text-right tabular-nums whitespace-nowrap">{row.closingStock}</td>
                 </tr>
               ))}
             </tbody>

@@ -17,8 +17,8 @@ export default function Dashboard({ setActiveTab }: { setActiveTab: (tab: string
 
   const modules = [
     { id: 'ledger', title: 'Vendor Ledger', desc: 'Opening, invoices, payments, TDS, and closing balance for the financial year.', value: '-₹34,52,270', color: 'bg-blue-500' },
-    { id: 'orders', title: 'Purchase Order History', desc: 'Open and closed purchase orders with line details and attachments.', value: '13', color: 'bg-blue-600' },
-    { id: 'inventory', title: 'Inventory available', desc: 'Stock summary of items available against your vendor code.', value: '42', color: 'bg-blue-500' },
+    { id: 'orders', title: 'Purchase Order', desc: 'Open and closed purchase orders with line details and attachments.', value: '13', color: 'bg-blue-600' },
+    { id: 'inventory', title: 'Inventory', desc: 'Stock summary of items available against your vendor code.', value: '42', color: 'bg-blue-500' },
   ];
 
   return (
@@ -80,11 +80,11 @@ export default function Dashboard({ setActiveTab }: { setActiveTab: (tab: string
               className="bg-slate-900/40 border border-slate-800/60 p-8 rounded-[2rem] hover:border-blue-600/40 hover:bg-slate-900/60 text-left transition-all duration-500 group relative overflow-hidden active:scale-[0.98]"
             >
               <div className="flex justify-between items-start mb-10">
-                <div className={`p-4 rounded-2xl ${mod.color} bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-500`}>
-                  <div className={`w-8 h-8 ${mod.color.replace('bg-', 'text-')}`}>
-                    {mod.id === 'ledger' && <FileText size={32} strokeWidth={1.5} />}
-                    {mod.id === 'orders' && <ShoppingCart size={32} strokeWidth={1.5} />}
-                    {mod.id === 'inventory' && <Package size={32} strokeWidth={1.5} />}
+                <div className={`w-14 h-14 rounded-2xl ${mod.color} flex items-center justify-center shadow-xl shadow-blue-900/20 group-hover:scale-110 transition-all duration-500`}>
+                  <div className="text-white">
+                    {mod.id === 'ledger' && <FileText size={28} strokeWidth={2} />}
+                    {mod.id === 'orders' && <ShoppingCart size={28} strokeWidth={2} />}
+                    {mod.id === 'inventory' && <Package size={28} strokeWidth={2} />}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

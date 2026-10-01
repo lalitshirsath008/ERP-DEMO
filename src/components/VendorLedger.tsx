@@ -77,39 +77,39 @@ export default function VendorLedger() {
             <thead>
               <tr className="border-b border-slate-800 bg-slate-900/60">
                 {['DATE', 'TYPE', 'DOC NO', 'PARTICULARS', 'OFFSET A/C', 'DEBIT (₹)', 'CREDIT (₹)', 'TDS (₹)', 'BALANCE (₹)'].map((head) => (
-                  <th key={head} className="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">{head}</th>
+                  <th key={head} className="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest whitespace-nowrap">{head}</th>
                 ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800">
               <tr className="bg-slate-900/20">
-                <td className="px-6 py-4 text-xs font-bold text-slate-300">—</td>
-                <td className="px-6 py-4"><span className="px-2 py-1 rounded bg-slate-800 text-slate-400 text-[10px] font-bold">Opening Balance</span></td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300">—</td>
-                <td className="px-6 py-4 text-xs font-bold text-slate-300">—</td>
-                <td className="px-6 py-4 text-xs font-mono font-bold text-slate-300">-₹26,07,016.60</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 py-1 rounded bg-slate-800 text-slate-400 text-[10px] font-bold uppercase">Opening Balance</span></td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-bold text-slate-300 whitespace-nowrap">—</td>
+                <td className="px-6 py-4 text-xs font-mono font-bold text-slate-300 tabular-nums whitespace-nowrap">-₹26,07,016.60</td>
               </tr>
               {ledgerEntries.map((row, idx) => (
-                <tr key={idx} className="hover:bg-slate-800/30 transition-colors">
-                  <td className="px-6 py-4 text-xs text-slate-400">{row.date}</td>
-                  <td className="px-6 py-4">
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                <tr key={idx} className="hover:bg-slate-800/30 transition-colors group">
+                  <td className="px-6 py-4 text-[11px] text-slate-400 whitespace-nowrap">{row.date}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${
                       row.type === 'Invoice' ? 'bg-blue-600/10 text-blue-400 border border-blue-600/20' : 'bg-amber-600/10 text-amber-400 border border-amber-600/20'
                     }`}>
                       {row.type}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-xs text-slate-400">{row.docNo}</td>
-                  <td className="px-6 py-4 text-[10px] leading-relaxed text-slate-500 max-w-xs">{row.particulars}</td>
-                  <td className="px-6 py-4 text-[10px] text-slate-500">{row.offset}</td>
-                  <td className="px-6 py-4 text-xs font-mono text-slate-400">{row.debit}</td>
-                  <td className="px-6 py-4 text-xs font-mono text-slate-400">{row.credit}</td>
-                  <td className="px-6 py-4 text-xs font-mono text-amber-500/80 font-bold">{row.tds}</td>
-                  <td className="px-6 py-4 text-xs font-mono font-bold text-slate-300">{row.balance}</td>
+                  <td className="px-6 py-4 text-[11px] text-slate-400 whitespace-nowrap">{row.docNo}</td>
+                  <td className="px-6 py-4 text-[10px] leading-relaxed text-slate-500 max-w-xs truncate whitespace-nowrap group-hover:max-w-none group-hover:whitespace-normal transition-all">{row.particulars}</td>
+                  <td className="px-6 py-4 text-[10px] text-slate-500 whitespace-nowrap">{row.offset}</td>
+                  <td className="px-6 py-4 text-[11px] font-mono text-slate-400 tabular-nums whitespace-nowrap">{row.debit}</td>
+                  <td className="px-6 py-4 text-[11px] font-mono text-slate-400 tabular-nums whitespace-nowrap">{row.credit}</td>
+                  <td className="px-6 py-4 text-[11px] font-mono text-amber-500/80 font-bold tabular-nums whitespace-nowrap">{row.tds}</td>
+                  <td className="px-6 py-4 text-[11px] font-mono font-bold text-slate-300 tabular-nums whitespace-nowrap">{row.balance}</td>
                 </tr>
               ))}
             </tbody>
